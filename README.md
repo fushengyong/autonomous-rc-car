@@ -30,6 +30,10 @@ sudo apt install ros-melodic-robot-localization
 ```
 sudo apt install ros-melodic-navigation ros-melodic-map-server ros-melodic-move-base 
 ```
+### 1.8. **Install Depth-To-LaserScan**
+```
+sudo apt install ros-melodic-depthimage-to-laserscan
+```
 ## 2. Build & Install
 Clone the repository and catkin_make:
 
