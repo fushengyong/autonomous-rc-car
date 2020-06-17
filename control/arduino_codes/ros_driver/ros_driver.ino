@@ -13,8 +13,8 @@ int PWM_LEFT = 6;
 int PWM_MIN = 90;
 int PWMRANGE = 255;
 
-float min_speed = 0.1; // m/s
-float max_speed = 0.2; // m/s
+float min_speed = 0.12; // m/s
+float max_speed = 0.18; // m/s
 
 ros::NodeHandle  nh;
 bool force_stop = false;

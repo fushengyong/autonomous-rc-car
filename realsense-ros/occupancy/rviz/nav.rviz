@@ -108,10 +108,6 @@ Visualization Manager:
           Value: false
         d400_accel_optical_frame:
           Value: false
-        d400_aligned_depth_to_color_frame:
-          Value: false
-        d400_aligned_depth_to_infra1_frame:
-          Value: false
         d400_color_frame:
           Value: false
         d400_color_optical_frame:
@@ -123,14 +119,6 @@ Visualization Manager:
         d400_gyro_frame:
           Value: false
         d400_imu_optical_frame:
-          Value: false
-        d400_infra1_frame:
-          Value: false
-        d400_infra1_optical_frame:
-          Value: false
-        d400_infra2_frame:
-          Value: false
-        d400_infra2_optical_frame:
           Value: false
         d400_link:
           Value: true
@@ -171,24 +159,14 @@ Visualization Manager:
                 d400_accel_frame:
                   d400_accel_optical_frame:
                     {}
-                d400_aligned_depth_to_color_frame:
+                d400_color_frame:
                   d400_color_optical_frame:
                     {}
-                d400_aligned_depth_to_infra1_frame:
-                  d400_infra1_optical_frame:
-                    {}
-                d400_color_frame:
-                  {}
                 d400_depth_frame:
                   d400_depth_optical_frame:
                     {}
                 d400_gyro_frame:
                   d400_imu_optical_frame:
-                    {}
-                d400_infra1_frame:
-                  {}
-                d400_infra2_frame:
-                  d400_infra2_optical_frame:
                     {}
               t265_link:
                 t265_accel_frame:
@@ -256,7 +234,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /d400/color/image_rect_color
+      Image Topic: /d400/color/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -281,14 +259,14 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
+        Max Value: 1.5954145193099976
+        Min Value: -0.1781466156244278
         Value: true
       Axis: Z
       Channel Name: intensity
       Class: rviz/PointCloud2
       Color: 255; 255; 255
-      Color Transformer: RGB8
+      Color Transformer: AxisColor
       Decay Time: 0
       Enabled: false
       Invert Rainbow: false
@@ -303,7 +281,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.10000000149011612
       Style: Flat Squares
-      Topic: /d400/depth_registered/points
+      Topic: /d400/depth/color/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -425,7 +403,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 10.146635055541992
+      Distance: 7.599967956542969
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -440,10 +418,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.1397955417633057
+      Pitch: 0.8897956609725952
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 2.940394639968872
+      Yaw: 3.0453948974609375
     Saved: ~
 Window Geometry:
   Displays:
