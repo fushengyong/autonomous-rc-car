@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="robot_localization" type="ukf_localization_node" name="ukfOdom_node" respawn="false" output="screen">
+        <rosparam command="load" file="$(find localization)/config/ukf_odom.yaml" />
+    </node>
+    
+</launch>
