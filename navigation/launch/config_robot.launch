@@ -3,9 +3,15 @@
     <include file="$(find realsense2_camera)/launch/cameras.launch"/>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find occupancy)/rviz/nav.rviz">
     </node>
-  <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom_broadcaster" args="0.0 0.0 0.0 0 0 0 map t265_odom_frame"/>
-    <!-- <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="0 navigation navsat_transform.launch" name="timed_launch_gps" output="screen" /> -->
-   
+     <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom_broadcaster" args="0.0 0.0 0.0 0 0 0 map t265_odom_frame"/>
+<!-- Kinect cloud to laser scan  -->
+    <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
+      <remap from="image"       to="/d400/depth/image_rect_raw"/>
+      <remap from="camera_info" to="/d400/depth/camera_info"/>
+      <remap from="scan"        to="/depth_scan"/>
+      <param name="range_max" type="double" value="4"/>
+      <param name="output_frame_id" type="string" value="d400_depth_frame"/>
+    </node>   
 
     
 </launch> 
