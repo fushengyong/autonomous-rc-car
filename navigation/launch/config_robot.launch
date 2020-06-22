@@ -3,15 +3,20 @@
     <include file="$(find realsense2_camera)/launch/cameras.launch"/>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find occupancy)/rviz/nav.rviz">
     </node>
-     <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom_broadcaster" args="0.0 0.0 0.0 0 0 0 map t265_odom_frame"/> -->
+     <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom_broadcaster" args="0.0 0.0 0.0 0 0 0 map t265_odom_frame"/>
 <!-- Kinect cloud to laser scan  -->
     <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
       <remap from="image"       to="/d400/depth/image_rect_raw"/>
       <remap from="camera_info" to="/d400/depth/camera_info"/>
       <remap from="scan"        to="/depth_scan"/>
       <param name="range_max" type="double" value="4"/>
-      <param name="output_frame_id" type="string" value="d400_depth_frame"/>
+      <param name="output_frame_id" type="string" value="d400_link"/>
     </node>   
 
+    <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter">
+        <rosparam command="load" file="$(find navigation)/params/laser_config.yaml" />
+        <remap from="scan" to="/depth_scan" />
+        <remap from="scan_filtered" to="scan" />
+    </node> 
     
 </launch> 

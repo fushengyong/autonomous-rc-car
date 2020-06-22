@@ -1,19 +1,19 @@
 global_costmap:
-  global_frame: map
+  global_frame: t265_odom_frame #map
   robot_base_frame: t265_pose_frame
 
-  update_frequency: 3.0
-  publish_frequency: 3.0
+  update_frequency: 5.0
+  publish_frequency: 5
   
-  rolling_window: true
-  static_map: false
+  # rolling_window: true
+  # static_map: false
 
-  width: 50.0
-  height: 50.0
-  resolution: 0.05
+  width: 20.0
+  height: 20.0
+  resolution: 0.03
 
   plugins:
     - {name: static_layer,            type: "costmap_2d::StaticLayer"}
-    - {name: obstacle_layer,          type: "costmap_2d::ObstacleLayer"}
+    # - {name: obstacle_layer,          type: "costmap_2d::ObstacleLayer"}
     - {name: inflation_layer,         type: "costmap_2d::InflationLayer"}
 

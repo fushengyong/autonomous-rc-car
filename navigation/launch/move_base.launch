@@ -1,7 +1,7 @@
 <launch>
 
    <master auto="start"/>
-    <!-- /odometry/filtered -->
+    <!-- /odometry/filtered  /t265/odom/sample-->
 
     <arg name="cmd_vel_topic" default="/cmd_vel" />
     <arg name="odom_topic" default="/t265/odom/sample" />

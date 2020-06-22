@@ -1,11 +1,11 @@
 <launch>
     <!-- Map server -->
-    <arg name="map_file" default="$(find navigation)/maps/laser_map/map.yaml"/>
+    <arg name="map_file" default="$(find navigation)/maps/new_map/map.yaml"/>
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />   
     <!-- AMCL -->
-    <include file="$(find localization)/launch/amcl.launch"/>
+    <!-- <include file="$(find localization)/launch/amcl.launch"/> -->
     <!-- EKF -->
-    <include file="$(find localization)/launch/ekf.launch"/>
+    <!-- <include file="$(find localization)/launch/ekf.launch"/> -->
     <!-- move_base -->
     <include file="$(find navigation)/launch/move_base.launch"/>
     

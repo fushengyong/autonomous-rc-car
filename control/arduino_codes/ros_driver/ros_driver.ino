@@ -10,14 +10,14 @@ int RIGHT_IN2 = 11;
 int PWM_RIGHT = 5;
 int PWM_LEFT = 6;
 
-int PWM_MIN = 90;
+int PWM_MIN = 80;
 int PWMRANGE = 255;
 
-float min_speed = 0.25; // m/s
-float max_speed = 0.58; // m/s
+float min_speed = 0.08; // m/s
+float max_speed = 0.15; // m/s
 
-float min_rot_speed = 0.05; // m/s
-float max_rot_speed = 0.18; // m/s
+float min_rot_speed = 0.04; // m/s
+float max_rot_speed = 0.08; // m/s
 
 ros::NodeHandle  nh;
 bool force_stop = false;
@@ -28,10 +28,10 @@ float check_speed(float orig_val, bool rot_flag){
   abs_val = fabs(orig_val);
   sign =int(orig_val/abs_val);
   if(!rot_flag){
-    ret_val = (min_speed > abs_val) ? sign*min_speed : orig_val;
+    ret_val = (min_speed > abs_val && abs_val > 0.000000001) ? sign*min_speed : orig_val;
     ret_val = (abs_val > max_speed) ? sign*max_speed : orig_val;
   } else{
-    ret_val = (min_rot_speed > abs_val) ? sign*min_rot_speed : orig_val;
+    ret_val = (min_rot_speed > abs_val && abs_val > 0.000000001) ? sign*min_rot_speed : orig_val;
     ret_val = (abs_val > max_rot_speed) ? sign*max_rot_speed : orig_val;
   }
   

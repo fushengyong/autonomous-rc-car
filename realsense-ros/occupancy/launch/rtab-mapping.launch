@@ -3,6 +3,7 @@
   <!-- <group ns="rtabmap"></group> -->
 
   <!-- SLAM -->
+     <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom_broadcaster" args="0.0 0.0 0.0 0 0 0 map t265_odom_frame"/>
 
     <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen" args="--delete_db_on_start">
           <param name="frame_id" type="string" value="t265_pose_frame"/>
