@@ -2,7 +2,5 @@
     <node pkg="rosserial_python" type="serial_node.py" name="driving_arduino">
         <param name="port" value="/dev/ttyACM0"/>
     </node>
-    <!-- <node pkg="rosserial_python" type="serial_node.py" name="steering_arduino">
-        <param name="port" value="/dev/ttyACM1"/>
-    </node> -->
+   
 </launch>

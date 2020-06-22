@@ -13,25 +13,34 @@ int PWM_LEFT = 6;
 int PWM_MIN = 90;
 int PWMRANGE = 255;
 
-float min_speed = 0.12; // m/s
-float max_speed = 0.18; // m/s
+float min_speed = 0.25; // m/s
+float max_speed = 0.58; // m/s
+
+float min_rot_speed = 0.05; // m/s
+float max_rot_speed = 0.18; // m/s
 
 ros::NodeHandle  nh;
 bool force_stop = false;
 float linear_speed_stateValue, angular_speed_stateValue;
-float check_speed(float orig_val){
+float check_speed(float orig_val, bool rot_flag){
   float abs_val, ret_val;
   int sign;
   abs_val = fabs(orig_val);
   sign =int(orig_val/abs_val);
-  ret_val = (min_speed > abs_val) ? sign*min_speed : orig_val;
-  ret_val = (abs_val > max_speed) ? sign*max_speed : orig_val;
+  if(!rot_flag){
+    ret_val = (min_speed > abs_val) ? sign*min_speed : orig_val;
+    ret_val = (abs_val > max_speed) ? sign*max_speed : orig_val;
+  } else{
+    ret_val = (min_rot_speed > abs_val) ? sign*min_rot_speed : orig_val;
+    ret_val = (abs_val > max_rot_speed) ? sign*max_rot_speed : orig_val;
+  }
+  
   return ret_val;
   
 }
 void speedCb( const geometry_msgs::Twist& speed_msg){
-  linear_speed_stateValue = check_speed(speed_msg.linear.x); //linear speed component
-  angular_speed_stateValue = check_speed(speed_msg.angular.z); //angular_speed_stateValue speed component
+  linear_speed_stateValue = check_speed(speed_msg.linear.x, false); //linear speed component
+  angular_speed_stateValue = check_speed(speed_msg.angular.z, true); //angular_speed_stateValue speed component
   
   //command the driving motors
   if(force_stop){

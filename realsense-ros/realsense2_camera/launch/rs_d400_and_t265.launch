@@ -81,6 +81,8 @@
       <arg name="topic_odom_in"         value="$(arg topic_odom_in)"/>
       <arg name="unite_imu_method"         value="$(arg unite_imu_method)"/>
       <arg name="calib_odom_file"       value="$(arg calib_odom_file)"/>
+      <!-- <arg name="publish_odom_tf"               value="true"/> -->
+      
     </include>
   </group>
 

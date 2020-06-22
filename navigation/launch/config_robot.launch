@@ -13,8 +13,5 @@
       <param name="output_frame_id" type="string" value="d400_depth_frame"/>
     </node>   
 
-    <!-- AMCL -->
-    <include file="$(find localization)/launch/amcl.launch"/>
-    <!-- EKF -->
-    <include file="$(find localization)/launch/ekf.launch"/>
+    
 </launch> 
