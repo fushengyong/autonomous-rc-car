@@ -3,7 +3,7 @@ obstacle_range: 2   # in real it's 10 m, but that reduces the complexity
 raytrace_range: 3.0
 max obstacle height: 0.50 #meters
 footprint: [[-0.16, -0.10], [0.16, -0.10], [0.16, 0.10], [-0.16, 0.10]]
-footprint_padding: 0.02
+footprint_padding: 0.06
 
 transform_tolerance: 0.5
 
@@ -31,7 +31,7 @@ static_layer:
 inflation_layer:
     enabled:              true
     #   cost_scaling_factor:  2.0  # exponential rate at which the obstacle cost drops off (default: 10)
-    inflation_radius:     0.13  # max. distance from an obstacle at which costs are incurred for planning paths.
+    inflation_radius:     0.05  # max. distance from an obstacle at which costs are incurred for planning paths.
     cost_scaling factor: 5
     # neutral cost: 66
     

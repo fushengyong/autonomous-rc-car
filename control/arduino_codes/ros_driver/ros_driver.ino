@@ -10,7 +10,7 @@ int RIGHT_IN2 = 11;
 int PWM_RIGHT = 5;
 int PWM_LEFT = 6;
 
-int PWM_MIN = 70;
+int PWM_MIN = 75;
 int PWMRANGE = 255;
 
 float min_speed = 0.25; // m/s
