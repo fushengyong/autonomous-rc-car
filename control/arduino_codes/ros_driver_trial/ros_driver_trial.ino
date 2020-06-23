@@ -10,29 +10,33 @@ int RIGHT_IN2 = 11;
 int PWM_RIGHT = 5;
 int PWM_LEFT = 6;
 
-int PWM_MIN = 70;
+int PWM_MIN = 65;
 int PWMRANGE = 255;
 
-float min_speed = 0.25; // m/s
-float max_speed = 0.35; // m/s
+float min_speed = 0.16; // m/s
+float max_speed = 0.28; // m/s
 
-float min_rot_speed = 0.25; // m/s
-float max_rot_speed = 0.28; // m/s
+float min_rot_speed = 0.15; // m/s
+float max_rot_speed = 0.22; // m/s
 
 ros::NodeHandle  nh;
 bool force_stop = false;
 float linear_speed_stateValue, angular_speed_stateValue;
 float check_speed(float orig_val, bool rot_flag){
   float abs_val, ret_val;
-  int sign;
-  abs_val = fabs(orig_val);
-  sign =int(orig_val/abs_val);
+  int sign;  
   if(!rot_flag){
-    ret_val = (min_speed > abs_val && abs_val > 0.000000001) ? sign*min_speed : orig_val;
-    ret_val = (abs_val > max_speed) ? sign*max_speed : orig_val;
+      orig_val = mapPwm(orig_val, min_speed, max_speed);
+      abs_val = fabs(orig_val);
+      sign =int(orig_val/abs_val);
+      ret_val = (min_speed > abs_val && abs_val > 0.000000001) ? sign*min_speed : orig_val;
+      ret_val = (abs_val > max_speed) ? sign*max_speed : orig_val;
   } else{
-    ret_val = (min_rot_speed > abs_val && abs_val > 0.000000001) ? sign*min_rot_speed : orig_val;
-    ret_val = (abs_val > max_rot_speed) ? sign*max_rot_speed : orig_val;
+      orig_val = mapPwm(orig_val, min_rot_speed, max_rot_speed);
+      abs_val = fabs(orig_val);
+      sign =int(orig_val/abs_val);
+      ret_val = (min_rot_speed > abs_val && abs_val > 0.000000001) ? sign*min_rot_speed : orig_val;
+      ret_val = (abs_val > max_rot_speed) ? sign*max_rot_speed : orig_val;
   }
   
   return ret_val;
@@ -121,7 +125,10 @@ void set_wheels_speed_percent(float left_wheel_speed_percent, float right_wheel_
 // Map x value from [0 .. 1] to [out_min .. out_max]
 float mapPwm(float x, float out_min, float out_max)
 {
-  return x * (out_max - out_min) + out_min;
+  if(fabs(x) >  0.001)
+    return x * (out_max - out_min) + out_min;
+  else
+    return 0;
 }
 
 
