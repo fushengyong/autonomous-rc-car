@@ -5,8 +5,8 @@ global_costmap:
   update_frequency: 5.0
   publish_frequency: 5
   
-  # rolling_window: true
-  # static_map: false
+  rolling_window: true
+  static_map: false
 
   width: 20.0
   height: 20.0

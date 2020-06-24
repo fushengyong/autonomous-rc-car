@@ -130,3 +130,12 @@ alias dep='rosdep install --from-paths src --ignore-src --rosdistro=melodic -y'
 
 export LD_LIBRARY_PATH=/usr/local/lib:/opt/ros/melodic/lib:/usr/local/lib
 export LD_LIBRARY_PATH=/usr/local/lib:/opt/ros/melodic/lib:/usr/local/lib:/usr/local/lib
+
+alias cfg='rs-enumerate-devices | grep Serial; roslaunch navigation config_robot.launch'
+alias rt='rostopic'
+alias in-nav='roslaunch navigation nav_indoor.launch'
+alias out-nav='roslaunch navigation nav_mapserver.launch'	# It runs the navigation stack within unkown environment.
+alias cont='roslaunch control low_level_control.launch'
+alias sb='source ~/.bashrc'
+alias rtab='roslaunch occupancy rtab-mapping.launch' # in case only mapping we use this command but without sending a goals. It' will be manually driven
+alias t2='sudo bash /home/dev/usb_workaroud/blink.sh'
