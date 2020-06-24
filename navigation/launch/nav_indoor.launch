@@ -1,7 +1,9 @@
 <launch>
     <!-- Map server -->
     <arg name="map_file" default="$(find navigation)/maps/new_map/map.yaml"/>
-    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />   
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />  
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find occupancy)/rviz/nav.rviz">
+    </node> 
     <!-- AMCL -->
     <!-- <include file="$(find localization)/launch/amcl.launch"/> -->
     <!-- EKF -->

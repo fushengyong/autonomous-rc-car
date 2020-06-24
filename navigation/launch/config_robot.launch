@@ -1,8 +1,6 @@
 <launch>    
     
-    <include file="$(find realsense2_camera)/launch/cameras.launch"/>
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find occupancy)/rviz/nav.rviz">
-    </node>
+    <include file="$(find realsense2_camera)/launch/cameras.launch"/>    
      <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom_broadcaster" args="0.0 0.0 0.0 0 0 0 map t265_odom_frame"/>
 <!-- Kinect cloud to laser scan  -->
     <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">

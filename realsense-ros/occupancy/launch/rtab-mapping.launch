@@ -32,5 +32,6 @@
           <param name="Reg/Force3DoF"             type="string" value="true"/>
           <param name="Vis/MinInliers"            type="string" value="12"/>
     </node>
-  
+      <node name="rviz" pkg="rviz" type="rviz" args="-d $(find occupancy)/rviz/rtab.rviz">
+      </node>
 </launch>
